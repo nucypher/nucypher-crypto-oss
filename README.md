@@ -1,2 +1,1 @@
-# bbs98-java
-
+BBS98 and ElGamal encryption algorithms
