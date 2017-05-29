@@ -31,3 +31,7 @@ task wrapper(type: Wrapper) {
     gradleVersion = '3.2.1'
 }
 
+jar {
+    archiveName = "nucypher-crypto-bbs98-${version}.${extension}"
+}
+
