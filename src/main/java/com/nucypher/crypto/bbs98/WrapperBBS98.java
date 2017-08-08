@@ -133,7 +133,7 @@ public class WrapperBBS98 {
 		ECPoint[] c = BBS98BouncyCastle.encrypt(params, ((ECPublicKey) pk).getQ(), m, random);
 
 		ECPoint c0 = c[0].normalize();
-		System.out.printf("x: %s, y: %s\n", c0.getAffineXCoord(), c0.getAffineYCoord());
+//		System.out.printf("x: %s, y: %s\n", c0.getAffineXCoord(), c0.getAffineYCoord());
 		return encodeTuple(c);
 	}
 
@@ -243,13 +243,13 @@ public class WrapperBBS98 {
 
 		System.arraycopy(p1Bytes, 0, encoded, 0, point_length);
 		System.arraycopy(p2Bytes, 0, encoded, point_length, point_length);
-		try {
-			Hex.encode(tuple[0].getEncoded(true), System.out);
-			System.out.println();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			Hex.encode(tuple[0].getEncoded(true), System.out);
+//			System.out.println();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		return encoded;
 	}
 
@@ -325,21 +325,6 @@ public class WrapperBBS98 {
 			pre.keygen(seed);
 		}
 		System.out.println((System.nanoTime()-t)/(1000.0 * 1000000) + " ms per keygen");
-	}
-
-	/**
-	 * Get encrypted message length. Available only for P-256 and P-521 curves
-	 *
-	 * @param ecSpec {@link ECParameterSpec}
-	 * @return message length
-	 */
-	public static int getMessageLength(ECParameterSpec ecSpec) {
-		switch(ecSpec.getN().bitLength()) {
-			case 256: return 16;
-			case 521: return 32;
-			//TODO maybe change to calculating
-			default: throw new IllegalArgumentException("Available only for P-256 and P-521 curves");
-		}
 	}
 
 }
